@@ -60,3 +60,35 @@ export function aufgabe02(args) {
   return result.join("")
 }
 linkupExerciseHandler("[data-click=aufgabe02]", aufgabe02)
+
+export function aufgabe03(args) {
+  const input = args
+  const result = []
+  let count = 0
+  for (let i = 0; i < input.length; i++) {
+    const currentElemnt = input[i]
+    if (currentElemnt === "e") {
+      count = count + 1
+    } else if (currentElemnt === "E") {
+      count = count + 1
+    }
+  }
+  //zähle eins hoch
+  return count
+}
+
+linkupExerciseHandler("[data-click=aufgabe03]", aufgabe03)
+
+export function aufgabe04(args) {
+  const input = args
+}
+
+export function aufgabe05(args) {
+  const input = args
+  const result = []
+
+  let hasUpperCaseLetter = false
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+  }
+}
