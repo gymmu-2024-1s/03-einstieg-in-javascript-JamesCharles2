@@ -90,5 +90,74 @@ export function aufgabe05(args) {
   let hasUpperCaseLetter = false
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
+    const upperCaseVersion = currentElement.toUpperCase()
+    if (currentElement === "." || currentElement === ".") {
+      // sonderzeichen ignorieren
+    } else if (currentElement === upperCaseVersion) {
+      hasUpperCaseLetter = true
+    }
   }
+  return hasUpperCaseLetter
+}
+linkupExerciseHandler("[data-click=aufgabe05]", aufgabe05)
+
+export function aufgabe06(args) {
+  const input = args
+  const result = []
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    // Wandle in einen grossbuchstaben um
+    const upperCaseVersion = currentElement.toUpperCase()
+    // Wandle in einen kleinbuchstaben um
+    const lowerCaseVersion = upperCaseVersion.toLowerCase()
+    // Prüfe ob gross und klein gleich sind
+    if (upperCaseVersion === lowerCaseVersion) {
+      // gib true zrück
+      return true
+    }
+  }
+  // gib falsch zurück
+  return false
+}
+
+export function aufgabe07(args) {
+  const input = args
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    if (currentElement === "u") {
+      // prüfe ob das nächste element ein n ist
+      const nextElement = input[i + 1]
+      if (nextElement === "n") {
+        // prüfe ob das dritte element ein d ist
+        const nextNextElement = input[i + 2]
+        if (nextNextElement === "d") {
+          // gib true zrück
+          return true
+          // wenn kein und gefunden wurde, gib false zrück
+        }
+      }
+    }
+  }
+
+  // gib false zurück
+  return false
+}
+linkupExerciseHandler("[data-click=aufgabe07]", aufgabe07)
+
+export function aufgabe08(args) {
+  const input = args
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    // ersetze e mit einer 3
+    if (currentElement === "e") {
+      return "3"
+    }
+
+
+  }
+}
+
+
 }
