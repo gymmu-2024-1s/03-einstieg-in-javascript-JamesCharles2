@@ -148,16 +148,96 @@ linkupExerciseHandler("[data-click=aufgabe07]", aufgabe07)
 
 export function aufgabe08(args) {
   const input = args
+  const result = []
+
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
     // ersetze e mit einer 3
     if (currentElement === "e") {
-      return "3"
+      result.push("3")
+    } else {
+      result.push(currentElement)
     }
-
-
   }
+  return result.join("")
+}
+linkupExerciseHandler("[data-click=aufgabe08]", aufgabe08)
+
+export function aufgabe09(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Teste ob eine Eingabe genau sechs Zeichen lang ist
+    if (input.length === 6) {
+      return true
+    }
+  }
+  return false
+}
+linkupExerciseHandler("[data-click=aufgabe09]", aufgabe09)
+
+export function aufgabe10(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+
+  // Teste ob input genau 7 zeichen lang ist
+  if (input.length === 7) {
+    //return true
+  } else {
+    return false
+  }
+
+  // Teste ob das erste Zeichen ein # ist
+  if (input[0] === "#") {
+    //return true
+  } else {
+    return false
+  }
+
+  for (let i = 1; i < input.length; i++) {
+    const currentElement = input[i]
+
+    //Teste ob eine Eingabe ein korrekter RGB Hexcode ist.
+    if (
+      currentElement === "0" ||
+      currentElement === "1" ||
+      currentElement === "2" ||
+      currentElement === "3" ||
+      currentElement === "4" ||
+      currentElement === "5" ||
+      currentElement === "6" ||
+      currentElement === "7" ||
+      currentElement === "8" ||
+      currentElement === "9" ||
+      currentElement === "A" ||
+      currentElement === "B" ||
+      currentElement === "C" ||
+      currentElement === "D" ||
+      currentElement === "E" ||
+      currentElement === "F"
+    ) {
+      //return true
+    } else {
+      return false
+    }
+  }
+
+  return true
 }
 
+linkupExerciseHandler("[data-click=aufgabe10]", aufgabe10)
 
+export function aufgabe11(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Gib den ASCII code eines einzelnen Buchstabens an.
+
+    result.push(currentElement.charCodeAt(0))
+  }
+  return result
 }
