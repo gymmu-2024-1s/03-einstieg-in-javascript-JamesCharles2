@@ -232,12 +232,79 @@ linkupExerciseHandler("[data-click=aufgabe10]", aufgabe10)
 export function aufgabe11(args) {
   const input = args
   const result = [] // das ist die Resultatliste
+  //teste ob input länger als ein zeichen ist
+
+  if (input.length === 1) {
+    return input.charCodeAt(0)
+  } else {
+    return null // gib null zruck
+  }
+}
+linkupExerciseHandler("[data-click=aufgabe11]", aufgabe11)
+
+export function aufgabe12(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
 
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
-    //Gib den ASCII code eines einzelnen Buchstabens an.
-
-    result.push(currentElement.charCodeAt(0))
+    if (currentElement === "e") {
+      return i
+    }
   }
-  return result
+  return -1
+}
+linkupExerciseHandler("[data-click=aufgabe12]", aufgabe12)
+
+export function aufgabe13(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+
+  let pos = -1
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Suche die Position des letzten `e`s in einem Text.
+    if (currentElement === "e") {
+      pos = i
+    }
+  }
+  return pos
+}
+linkupExerciseHandler("[data-click=aufgabe13]", aufgabe13)
+
+export function aufgabe14(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+  let count = 0
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Suche die Position des dritten `e`s in einem Text.
+    if (currentElement === "e") {
+      count = count + 1
+      if (count === 3) {
+        return i
+      } else {
+        return -1
+      }
+    }
+  }
+  return count
+}
+linkupExerciseHandler("[data-click=aufgabe14]", aufgabe14)
+
+export function aufgabe15(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+  let count = 0
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Suche die Position des dritten `e`s in einem Text.
+    if (currentElement === "e") {
+      count = count + 1
+    }
+  }
+  return count
 }
