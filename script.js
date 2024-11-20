@@ -276,22 +276,20 @@ linkupExerciseHandler("[data-click=aufgabe13]", aufgabe13)
 export function aufgabe14(args) {
   const input = args
   const result = [] // das ist die Resultatliste
-  let count = 0
 
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
     //Suche die Position des dritten `e`s in einem Text.
     if (currentElement === "e") {
-      count = count + 1
-      if (count === 3) {
-        return i
-      } else {
-        return -1
-      }
+      result.push(i)
+    }
+    if (result.length === 3) {
+      return i
     }
   }
-  return count
+  return -1
 }
+
 linkupExerciseHandler("[data-click=aufgabe14]", aufgabe14)
 
 export function aufgabe15(args) {
@@ -308,3 +306,70 @@ export function aufgabe15(args) {
   }
   return count
 }
+
+linkupExerciseHandler("[data-click=aufgabe15]", aufgabe15)
+
+export function aufgabe16(args) {
+  const input = args
+  const result1 = [] // das ist die Resultatliste
+  const result2 = []
+
+  let dollarFound = false
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+
+    if (currentElement === "$") {
+      dollarFound = true
+    }
+    // wenn du noch kein Dollar gefunden hast dann hänge an Liste result 1 an
+    if (dollarFound===false) {
+      result1.push(currentElement)
+    } else {
+      result2.push(currentElement)
+    }
+  }
+  return [result1. join(""), result2]
+
+    }
+linkupExerciseHandler('[data-click="aufgabe16"]', "aufgabe16")
+
+export function aufgabe17(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+      //Lesen Sie die Eingabe als Liste ein, Einträge in der Liste werden von einem ',' getrennt
+    if (currentElement === ",") {
+      result.push(i)
+      //Lesen Sie die Eingabe nur bis zum ersten Komma ein
+    }
+
+    } if (currentElement === ",") {
+      return i
+    }
+  } return result
+
+  linkupExerciseHandler('[data-click="aufgabe17]', "aufgabe17)
+
+  export function aufgabe18(args)
+    const input = args
+    const result = [] // das ist die Resultatliste
+    const result2 = [] // das ist die Resultatliste
+    const result3 = [] // das ist die Resultatliste
+
+    for (let i = 0; i < input.length; i++)
+      if (result.length === 3) {
+    }
+      const currentElement = input[i]
+      //Lesen Sie die Eingabe als Liste ein, Einträge in der Liste werden von einem ',' getrennt
+      if (currentElement === ",") {
+        result.push(i)
+        //Lesen Sie die Eingabe nur bis zum ersten Komma ein
+      } else if (currentElement === ",") {
+        result2.push(i)
+        //Lesen Sie die Eingabe nur bis zum zweiten Komma ein
+      } else if (currentElement === ",") {
+        result3.push(i)
+      }
