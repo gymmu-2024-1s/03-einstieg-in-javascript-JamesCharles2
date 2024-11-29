@@ -85,15 +85,13 @@ export function aufgabe04(args) {
 
 export function aufgabe05(args) {
   const input = args
-  const result = []
 
   let hasUpperCaseLetter = false
+
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
-    const upperCaseVersion = currentElement.toUpperCase()
-    if (currentElement === "." || currentElement === ".") {
-      // sonderzeichen ignorieren
-    } else if (currentElement === upperCaseVersion) {
+    const ascii = currentElement.charCodeAt(0)
+    if (ascii >= 65 && ascii <= 90) {
       hasUpperCaseLetter = true
     }
   }
@@ -104,22 +102,34 @@ linkupExerciseHandler("[data-click=aufgabe05]", aufgabe05)
 export function aufgabe06(args) {
   const input = args
   const result = []
+  let hasspecialcaracter = false
 
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
-    // Wandle in einen grossbuchstaben um
-    const upperCaseVersion = currentElement.toUpperCase()
-    // Wandle in einen kleinbuchstaben um
-    const lowerCaseVersion = upperCaseVersion.toLowerCase()
-    // Prüfe ob gross und klein gleich sind
-    if (upperCaseVersion === lowerCaseVersion) {
-      // gib true zrück
+    // teste ob in dem Text mindestens 1 Sonerzeichen vorkommt.
+    if (
+      currentElement === "!" ||
+      currentElement === "@" ||
+      currentElement === "#" ||
+      currentElement === "$" ||
+      currentElement === "%" ||
+      currentElement === "^" ||
+      currentElement === "&" ||
+      currentElement === "*" ||
+      currentElement === "(" ||
+      currentElement === ")" ||
+      currentElement === "-" ||
+      currentElement === "."
+    ) {
+      hasspecialcaracter = true
+    }
+    if (hasspecialcaracter) {
       return true
     }
   }
-  // gib falsch zurück
   return false
 }
+linkupExerciseHandler('[data-click="aufgabe06"]', aufgabe06)
 
 export function aufgabe07(args) {
   const input = args
@@ -323,15 +333,14 @@ export function aufgabe16(args) {
       dollarFound = true
     }
     // wenn du noch kein Dollar gefunden hast dann hänge an Liste result 1 an
-    if (dollarFound===false) {
+    if (dollarFound === false) {
       result1.push(currentElement)
     } else {
       result2.push(currentElement)
     }
   }
-  return [result1. join(""), result2]
-
-    }
+  return [result1.join(""), result2]
+}
 linkupExerciseHandler('[data-click="aufgabe16"]', "aufgabe16")
 
 export function aufgabe17(args) {
@@ -340,36 +349,102 @@ export function aufgabe17(args) {
 
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
-      //Lesen Sie die Eingabe als Liste ein, Einträge in der Liste werden von einem ',' getrennt
+    //Lesen Sie die Eingabe als Liste ein, Einträge in der Liste werden von einem ',' getrennt
     if (currentElement === ",") {
       result.push(i)
       //Lesen Sie die Eingabe nur bis zum ersten Komma ein
     }
+  }
+  if (currentElement === ",") {
+    return i
+  }
+  return result
+}
 
-    } if (currentElement === ",") {
-      return i
+linkupExerciseHandler('[data-click="aufgabe17"]', "aufgabe17")
+
+export function aufgabe18(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+  const result2 = [] // das ist die Resultatliste
+  const result3 = [] // das ist die Resultatliste
+
+  for (let i = 0; i < input.length; i++)
+    if (result.length === 3) {
     }
-  } return result
+  const currentElement = input[i]
+  //Lesen Sie die Eingabe als Liste ein, Einträge in der Liste werden von einem ',' getrennt
+  if (currentElement === ",") {
+    result.push(i)
+    //Lesen Sie die Eingabe nur bis zum ersten Komma ein
+  } else if (currentElement === ",") {
+    result2.push(i)
+    //Lesen Sie die Eingabe nur bis zum zweiten Komma ein
+  } else if (currentElement === ",") {
+    result3.push(i)
+  }
+}
 
-  linkupExerciseHandler('[data-click="aufgabe17]', "aufgabe17)
+export function aufgabe19(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
 
-  export function aufgabe18(args)
-    const input = args
-    const result = [] // das ist die Resultatliste
-    const result2 = [] // das ist die Resultatliste
-    const result3 = [] // das ist die Resultatliste
-
-    for (let i = 0; i < input.length; i++)
-      if (result.length === 3) {
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    if (currentElement === "e") {
+      result.push(i)
     }
-      const currentElement = input[i]
-      //Lesen Sie die Eingabe als Liste ein, Einträge in der Liste werden von einem ',' getrennt
-      if (currentElement === ",") {
-        result.push(i)
-        //Lesen Sie die Eingabe nur bis zum ersten Komma ein
-      } else if (currentElement === ",") {
-        result2.push(i)
-        //Lesen Sie die Eingabe nur bis zum zweiten Komma ein
-      } else if (currentElement === ",") {
-        result3.push(i)
+  }
+}
+
+export function aufgabe20(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    // prüfen sie ob nach jedem "." ein leerschlag kommt.
+    if (currentElement === ".") {
+      if (input[i + 1] === " ") {
+        return true
       }
+      return false
+    }
+  }
+}
+linkupExerciseHandler("[data-click=aufgabe20]", aufgabe20)
+
+export function aufgabe21(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+
+  for (let i = input.length - 1; i >= 0; i--) {
+    const currentElement = input[i]
+
+    //kehren Sie die Eingabe um
+    result.push(currentElement)
+  }
+  return result.join("")
+}
+linkupExerciseHandler('[data-click="aufgabe21]', "aufgabe21")
+
+export function aufgabe22(args) {
+  const input = args
+  const result = [] // das ist die Resultatliste
+  let kFound = false
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Es sollen alle Zeichen aus der Eingabe mit `_` ersetzt werden, bis zum ersten "k"
+    if (currentElement === "k") {
+      kFound = true
+    }
+    if (kFound === false) {
+      result.push("_")
+    } else {
+      result.push(currentElement)
+    }
+  }
+  return result.join("")
+}
+linkupExerciseHandler('[data-click="aufgabe22"]', "aufgabe22")
