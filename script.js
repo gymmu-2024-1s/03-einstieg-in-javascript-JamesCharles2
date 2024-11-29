@@ -448,3 +448,40 @@ export function aufgabe22(args) {
   return result.join("")
 }
 linkupExerciseHandler('[data-click="aufgabe22"]', "aufgabe22")
+
+export function aufgabe23(args) {
+  const input = args
+  const result = []
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    // Das erste Zeichen der Eingabe soll zusätzlich ganz vorne und ganz hinten an der Ausgabe angehängt werden.
+
+    if (i === 0) {
+      result.push(currentElement)
+    }
+
+    result.push(currentElement)
+
+    if (i === input.length - 1) {
+      result.push(input[0])
+    }
+  }
+  return result.join("")
+}
+
+linkupExerciseHandler("[data-click=aufgabe23]", aufgabe23)
+
+export function aufgabe24(args) {
+  const input = args
+  const result = []
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Das erste und das letzte Zeichen der Eingabe sollen vertauscht werden
+    if (i === 0 || i === input.length - 1) {
+      result.push(currentElement)
+    } else {
+      result.push(input[input.length - 1 - i])
+    }
+  }
+  return result.join("")
+}
