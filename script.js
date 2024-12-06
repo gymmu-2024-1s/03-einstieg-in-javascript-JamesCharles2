@@ -391,11 +391,13 @@ export function aufgabe19(args) {
 
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
-    if (currentElement === "e") {
-      result.push(i)
-    }
+    //jedes zeichen verdoppelen
+    result.push(currentElement)
+    result.push(currentElement)
   }
+  return result.join("")
 }
+linkupExerciseHandler('[data-click="aufgabe19"]', "aufgabe19")
 
 export function aufgabe20(args) {
   const input = args
@@ -474,6 +476,32 @@ linkupExerciseHandler("[data-click=aufgabe23]", aufgabe23)
 export function aufgabe24(args) {
   const input = args
   const result = []
+
+  if (input.length < 2) {
+    return input
+  }
+
+  const firstLetter = input[0]
+  const lastLetter = input[input.length - 1]
+
+  result.push(lastLetter)
+
+  for (let i = 1; i < input.length - 1; i++) {
+    const currentElement = input[i]
+
+    result.push(currentElement)
+  }
+
+  result.push(firstLetter)
+
+  return result.join("")
+}
+
+linkupExerciseHandler("[data-click=aufgabe24]", aufgabe24)
+
+export function aufgabe25(args) {
+  const input = args
+  const result = []
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
     //Das erste und das letzte Zeichen der Eingabe sollen vertauscht werden
@@ -485,3 +513,71 @@ export function aufgabe24(args) {
   }
   return result.join("")
 }
+linkupExerciseHandler("[data-click=aufgabe25]", aufgabe25)
+
+export function aufgabe26(args) {
+  const input = args
+  const result = []
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    //Vergleichen Sie die ersten beiden Zeichen der Eingabe und vertauschen Sie diese so dass Sie alphanumerisch sortiert sind
+    if (i === 0 || i === 1) {
+      result.push(currentElement)
+    } else {
+      result.push(input[input.length - 1 - i])
+    }
+  }
+  return result.join("")
+}
+linkupExerciseHandler("[data-click=aufgabe26]", aufgabe26)
+
+export function aufgabe27(args) {
+  const input = args
+  const result = []
+
+  if (input.length === 0) {
+    return false
+  }
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    const asciiCode = currentElement.charCodeAt(0)
+    //Testen sie, ob eine Eingabe eine Zahl ist
+    if (48 <= asciiCode && asciiCode <= 57) {
+    } else {
+      return false
+    }
+  }
+  return true
+}
+linkupExerciseHandler("[data-click=aufgabe27]", aufgabe27)
+
+export function aufgabe28(args) {
+  const input = args
+  const result1 = []
+  const result2 = []
+
+  let secondNum = false
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    const ascii = currentElement.charCodeAt(0)
+    // Testen Sie, ob in der Eingabe 2 Zahlen von einem Leerzeichen getrennt sind. Falls ja geben Sie die Summe als Ausgabe aus; sonst Fehlermeldung.
+    if (ascii >= 48 && ascii <= 57) {
+      if (secondNum === false) {
+        result1.push(currentElement)
+      } else {
+        result2.push(currentElement)
+      }
+    } else if (ascii === 32) {
+      secondNum = true
+    } else {
+      return null
+    }
+  }
+
+  const num1 = parseInt(result1.join(""))
+  const num2 = parseInt(result2.join(""))
+  return num1 + num2
+}
+
+linkupExerciseHandler("[data-click=aufgabe28]", aufgabe28)
