@@ -81,7 +81,46 @@ linkupExerciseHandler("[data-click=aufgabe03]", aufgabe03)
 
 export function aufgabe04(args) {
   const input = args
+  const result = []
+
+  // Wir filtern die Eingabe so, dass nur noch Buchstaben und Leerzeichen übrig bleiben
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    const ascii = currentElement.charCodeAt(0)
+    if (ascii >= 65 && ascii <= 90) {
+      result.push(currentElement)
+    } else if (ascii >= 97 && ascii <= 122) {
+      result.push(currentElement)
+    } else if (ascii === 32) {
+      result.push(currentElement)
+    }
+  }
+  // Jetzt könnten wir noch mehrere Leerzeichen am Stück haben, die müssen wir noch filtern
+
+  const result2 = []
+  for (let i = 0; i < result.length; i++) {
+    const currentElement = result[i]
+    const nextElement = result[i + 1]
+
+    if (currentElement === " " && nextElement === " ") {
+      // hier sind 2 Leerzeichen hintereinander, wir ignorieren das erste
+    } else {
+      result2.push(currentElement)
+    }
+  }
+  // jetzt können wir die Leerzeichen zählen
+  let count = 0
+  for (let i = 0; i < result2.length; i++) {
+    const currentElement = result2[i]
+    if (currentElement === " ") {
+      count++
+    }
+  }
+  // da es ein wort mehr wie leerzeichen gibt, geben wie leerzeichen +1 zurück
+  return count + 1
 }
+
+linkupExerciseHandler("[data-click=aufgabe04]", aufgabe04)
 
 export function aufgabe05(args) {
   const input = args
@@ -345,23 +384,11 @@ linkupExerciseHandler('[data-click="aufgabe16"]', "aufgabe16")
 
 export function aufgabe17(args) {
   const input = args
-  const result = [] // das ist die Resultatliste
+  const totallist = [] // das ist die Resultatliste
+  const currentlist = [e, i, n] // das ist die Resultatliste
 
-  for (let i = 0; i < input.length; i++) {
-    const currentElement = input[i]
-    //Lesen Sie die Eingabe als Liste ein, Einträge in der Liste werden von einem ',' getrennt
-    if (currentElement === ",") {
-      result.push(i)
-      //Lesen Sie die Eingabe nur bis zum ersten Komma ein
-    }
-  }
-  if (currentElement === ",") {
-    return i
-  }
-  return result
+  return totallist
 }
-
-linkupExerciseHandler('[data-click="aufgabe17"]', "aufgabe17")
 
 export function aufgabe18(args) {
   const input = args
@@ -502,17 +529,33 @@ linkupExerciseHandler("[data-click=aufgabe24]", aufgabe24)
 export function aufgabe25(args) {
   const input = args
   const result = []
+
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
-    //Das erste und das letzte Zeichen der Eingabe sollen vertauscht werden
-    if (i === 0 || i === input.length - 1) {
-      result.push(currentElement)
+
+    // Das mittlere Zeichen der Eingabe soll gelöscht werden. Wenn die Anzahl Zeichen gerade ist, sollen die beiden mittleren Zeichen gelöscht werden.
+
+    if (input.length % 2 === 0) {
+      if (i === input.length / 2 - 1) {
+        continue
+      }
+      if (i === input.length / 2) {
+        continue
+      } else {
+        result.push(currentElement)
+      }
     } else {
-      result.push(input[input.length - 1 - i])
+      if (i === Math.floor(input.length / 2)) {
+        continue
+      }
+
+      result.push(currentElement)
     }
   }
+
   return result.join("")
 }
+
 linkupExerciseHandler("[data-click=aufgabe25]", aufgabe25)
 
 export function aufgabe26(args) {
@@ -521,6 +564,7 @@ export function aufgabe26(args) {
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
     //Vergleichen Sie die ersten beiden Zeichen der Eingabe und vertauschen Sie diese so dass Sie alphanumerisch sortiert sind
+
     if (i === 0 || i === 1) {
       result.push(currentElement)
     } else {
