@@ -385,10 +385,24 @@ linkupExerciseHandler('[data-click="aufgabe16"]', "aufgabe16")
 export function aufgabe17(args) {
   const input = args
   const totallist = [] // das ist die Resultatliste
-  const currentlist = [e, i, n] // das ist die Resultatliste
+  const currentlist = [] // das ist die Resultatliste
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+
+    // wenn wir auf ein Leerzeichen treffen , dann schreiben wir alles was wir bis jetzt haben in die totalliste
+    if (currentElement === ",") {
+      totallist.push(currentlist.join(""))
+      currentlist.length = 0
+    } else {
+      currentlist.push(currentElement)
+    }
+  }
+  // wir schreiben alles was wir noch bis zum Ende gelesen haben in die liste
+  totallist.push(currentlist.join(""))
 
   return totallist
 }
+linkupExerciseHandler("[data-click=aufgabe17]", aufgabe17)
 
 export function aufgabe18(args) {
   const input = args
@@ -625,3 +639,90 @@ export function aufgabe28(args) {
 }
 
 linkupExerciseHandler("[data-click=aufgabe28]", aufgabe28)
+
+export function aufgabe29(args) {
+  const input = args
+  const result = []
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+
+    //Testen ob JC vorkommt, falls ja ersetzen Sie ihn durch "James Charles" wenn nein dann gebe falsch züruck
+    if (currentElement === "J") {
+      if (input[i + 1] === "C") {
+        return "James Charles"
+      }
+    } else {
+      return false
+    }
+  }
+  return result.join("")
+}
+
+linkupExerciseHandler("[data-click=aufgabe29]", aufgabe29)
+
+export function aufgabe30(args) {
+  const input = args
+  const result = []
+
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+
+    //ersetze JC in einem text durch James Charles
+    if (currentElement === "J") {
+      if (input[i + 1] === "C") {
+        result.push("James Charles")
+        i++
+      } else {
+        result.push(currentElement)
+      }
+    } else {
+      result.push(currentElement)
+    }
+  }
+  return result.join("")
+}
+
+linkupExerciseHandler("[data-click=aufgabe30]", aufgabe30)
+
+export function aufgabe31(args) {
+  const input = args
+  const result = []
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i]
+    // ersetze jedes "e" durch "John Pork". Falls kein "e" vorkommt gebe is calling  zurück
+    if (currentElement === "e") {
+      result.push("John Pork")
+    } else {
+      result.push(currentElement)
+    }
+  }
+
+  return result.join("")
+}
+linkupExerciseHandler("[data-click=aufgabe31]", aufgabe31)
+
+export function BubbleSort(args) {
+  const text = args
+  const list = text.split("") // so können wir den text in eine list6e umwandeln das benutzen wir wenn wir ein element vertauschen wollen
+  for (let i = 0; i < list.length - 1; i++) {
+    const currentElement = list[i]
+    const nextElement = list[i + 1]
+    // Vergleiche die ASCII-Werte der beiden benachbarten Zeichen
+    if (currentElement.charCodeAt(0) > nextElement.charCodeAt(0)) {
+      // Wenn der ASCII-Wert des aktuellen Zeichens größer ist als der des nächsten
+
+      // die beiden zeichen müssen vertauscht werden
+      // hier ist reheienfolge nichtt richtig, die Elemente müssen getauscht werden
+      const tmp = list[i + 1]
+      list[i + 1] = list[i] // tausche das aktuelle Element mit dem nächsten
+      list[i] = tmp
+      // Wenn der  Tausch stattgefunden hat, starte die Schleife von vorne
+      i = -1 // starte von vorne wenn etwas vertauscht wurde
+    }
+  }
+  const result = list.join("")
+  return result // Gibt den sortierten String zurück
+}
+
+linkupExerciseHandler("[data-click=BubbleSort]", BubbleSort)
