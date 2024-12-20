@@ -640,89 +640,82 @@ export function aufgabe28(args) {
 
 linkupExerciseHandler("[data-click=aufgabe28]", aufgabe28)
 
-export function aufgabe29(args) {
-  const input = args
+export function eigeneAufgabe1(args) {
+  const input = args // Der Eingabetext
   const result = []
+  let count = 0 // Zähler für das zweite Zeichen
 
   for (let i = 0; i < input.length; i++) {
-    const currentElement = input[i]
+    const currentElement = input[i] // Aktuelles Zeichen
 
-    //Testen ob JC vorkommt, falls ja ersetzen Sie ihn durch "James Charles" wenn nein dann gebe falsch züruck
-    if (currentElement === "J") {
-      if (input[i + 1] === "C") {
-        return "James Charles"
-      }
+    // Wenn das Zeichen ein Leerzeichen ist, ersetze es mit 'F' und zähle es
+    if (currentElement === " ") {
+      result.push("F")
+      count++ // Leerzeichen zählt auch
     } else {
-      return false
-    }
-  }
-  return result.join("")
-}
-
-linkupExerciseHandler("[data-click=aufgabe29]", aufgabe29)
-
-export function aufgabe30(args) {
-  const input = args
-  const result = []
-
-  for (let i = 0; i < input.length; i++) {
-    const currentElement = input[i]
-
-    //ersetze JC in einem text durch James Charles
-    if (currentElement === "J") {
-      if (input[i + 1] === "C") {
-        result.push("James Charles")
-        i++
+      // Überprüfe, ob es sich um das zweite Zeichen handelt
+      if (count % 2 !== 0) {
+        // Wenn es noch kein Großbuchstabe ist, wandle es um
+        if (currentElement !== currentElement.toUpperCase()) {
+          result.push(currentElement.toUpperCase())
+        } else {
+          result.push(currentElement) // Wenn es bereits ein Großbuchstabe ist, bleibt es gleich
+        }
       } else {
-        result.push(currentElement)
+        result.push(currentElement) // ansonsten bleibt das Zeichen unverändert
       }
-    } else {
-      result.push(currentElement)
+      count++ // Zähler erhöhen
     }
   }
+
   return result.join("")
 }
 
-linkupExerciseHandler("[data-click=aufgabe30]", aufgabe30)
+linkupExerciseHandler("[data-click=eigeneAufgabe1]", eigeneAufgabe1)
 
-export function aufgabe31(args) {
+export function eigeneAufgabe2(args) {
+  const input = args
+  let sum = 0 // Variable, um die Summe der gefundenen Zahlen zu speichern
+  let hasNumber = false // überprüft ob eine Zahl vorhanden ist
+  for (let i = 0; i < input.length; i++) {
+    const currentElement = input[i] //Aktuelles Element
+    // Versuche jedes Zeichen in der aktuellen Zeichenkette auf Zahl zu prüfen
+    for (let j = 0; j < currentElement.length; j++) {
+      const currentChar = currentElement[j] //Aktuelles Zeichen
+
+      // überprüfe ob das Zeichen eine Zahl ist
+      if (!isNaN(currentChar) && currentChar !== " ") {
+        sum += parseInt(currentChar) // Zahl zur Summe hinzufügen
+        hasNumber = true // Zahl wurde gefunden
+      }
+    }
+  }
+  // wenn eine Zahl gefunden wurde gebe die Summe zurück ansonsten gebe s zurück
+  if (hasNumber) {
+    return sum
+  } else {
+    return "s"
+  }
+}
+
+linkupExerciseHandler("[data-click=eigeneAufgabe2]", eigeneAufgabe2)
+
+export function eigeneAufgabe3(args) {
   const input = args
   const result = []
+  const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+  let count = 0 //Zähler für Vokkale
+
   for (let i = 0; i < input.length; i++) {
     const currentElement = input[i]
-    // ersetze jedes "e" durch "John Pork". Falls kein "e" vorkommt gebe is calling  zurück
-    if (currentElement === "e") {
-      result.push("John Pork")
+    // wenn das zeichen ein Vokal ist
+    if (vowels.includes(currentElement)) {
+      count++ // Zähler erhöhen
     } else {
       result.push(currentElement)
     }
   }
-
-  return result.join("")
-}
-linkupExerciseHandler("[data-click=aufgabe31]", aufgabe31)
-
-export function BubbleSort(args) {
-  const text = args
-  const list = text.split("") // so können wir den text in eine list6e umwandeln das benutzen wir wenn wir ein element vertauschen wollen
-  for (let i = 0; i < list.length - 1; i++) {
-    const currentElement = list[i]
-    const nextElement = list[i + 1]
-    // Vergleiche die ASCII-Werte der beiden benachbarten Zeichen
-    if (currentElement.charCodeAt(0) > nextElement.charCodeAt(0)) {
-      // Wenn der ASCII-Wert des aktuellen Zeichens größer ist als der des nächsten
-
-      // die beiden zeichen müssen vertauscht werden
-      // hier ist reheienfolge nichtt richtig, die Elemente müssen getauscht werden
-      const tmp = list[i + 1]
-      list[i + 1] = list[i] // tausche das aktuelle Element mit dem nächsten
-      list[i] = tmp
-      // Wenn der  Tausch stattgefunden hat, starte die Schleife von vorne
-      i = -1 // starte von vorne wenn etwas vertauscht wurde
-    }
-  }
-  const result = list.join("")
-  return result // Gibt den sortierten String zurück
+  return count // Rückgabe der Anzahl der Vokale
 }
 
-linkupExerciseHandler("[data-click=BubbleSort]", BubbleSort)
+linkupExerciseHandler("[data-click=eigeneAufgabe3]", eigeneAufgabe3)

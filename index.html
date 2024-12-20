@@ -70,14 +70,18 @@
           Nachfolger. Das Verfahren geht so lange bis die Liste sortiert ist.
         </p>
 
-        <h3>Selectionsort</h3>
+        <h3>Bucketsort</h3>
         <p>
-          Ist ein Sortierverfahren das eine Liste schritt für Schritt sortiert
-          Man sucht zuerst in der Liste das kleinste Element und dann wird es
-          mit dem ersten Element der Liste vertauscht. Danach wiederholt man
-          dieses Verfahren mit dem Rest der Liste die noch unsortiert ist. Man
-          sucht wieder das kleinste Element und und tauscht es mit dem Element
-          nach dem bereits getauschten Element.
+          Bucket Sort ist ein nicht-vergleichbasierter Sortieralgorithmus, der
+          eine Liste von gleichmäßig verteilten Elementen in linearer Zeit
+          sortiert. Dieses Verfahren erfolgt dabei in drei Schritten: 1. Zuerst
+          werden sogeanannte "Buckets" (Eimer) erstellt, in denen die Elemente
+          der unsortierten Liste verteilt und abgelegt werden. 2. Jeder dieser
+          Buckets wird dann mit einem anderen Sortierverfahren sortiert, wie zb.
+          dem obigen Insertion Sort 3.Nachdem alle Buckets individuell sortiert
+          wurden, werden die Elemente aus den Buckets in der richtigen
+          Reihenfolge zusammengefügt, um eine neue, sortierte Liste zu
+          erstellen.
         </p>
 
         <h3>Insertionsort</h3>
